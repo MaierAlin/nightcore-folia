@@ -13,26 +13,26 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Setup Java 21
-          uses: actions/setup-java@v4
-          with:
-            java-version: 21
-            distribution: temurin
-      
-        - name: Clear local Maven repository
-          run: rm -rf ~/.m2/repository
-      
-        - name: Build project with Maven
-          run: mvn clean package -B -U
-      
-        - name: Upload compiled JARs
-          uses: actions/upload-artifact@v4
-          with:
-            name: Nightcore-Artifacts
-            path: |
-              main/target/
-              bridge/target/
-              utils/target/
-              spigot/target/
-              paper/target/
-              intergration-placeholderapi/target/
-            retention-days: 30
+        uses: actions/setup-java@v4
+        with:
+          java-version: '21'
+          distribution: 'temurin'
+
+      - name: Clear local Maven repository
+        run: rm -rf ~/.m2/repository
+
+      - name: Build project with Maven
+        run: mvn clean package -B -U
+
+      - name: Upload compiled JARs
+        uses: actions/upload-artifact@v4
+        with:
+          name: Nightcore-Artifacts
+          path: |
+            main/target/
+            bridge/target/
+            utils/target/
+            spigot/target/
+            paper/target/
+            intergration-placeholderapi/target/
+          retention-days: 30
